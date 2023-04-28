@@ -33,4 +33,4 @@ test.describe('All tests Regist', () => {
     await RegistPage.fill('Conta de Água', balance, '2023-04-27');
     await RegistPage.thenAddValue(balance);
   });
-}); 
+});

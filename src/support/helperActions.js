@@ -1,4 +1,4 @@
-import data from '../support/radomValue';
+import data from './radomValue';
 
 export class HelperActions {
 
