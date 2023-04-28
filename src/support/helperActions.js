@@ -1,18 +1,20 @@
 import data from './radomValue';
+import { expect } from '@playwright/test';
 
 export class HelperActions {
-
-  /**
-   * @param {import('@playwright/test').Page} page
-   */
 
   constructor(page) {
     this.page = page;
     this.radomDescrib = data.getRandomDescrib();
-    this.randomAmount = data.getRandomAmount();
+    this.randomAmount = data.getRandomAmount(150, 200);
     this.randomMonth = data.getRandomMonth();
     this.radonDay = data.getRandomDay();
     this.currentDate = new Date();
+  }
+
+  async goToApp() {
+    await this.page.goto('/');
+    await expect(this.page).toHaveTitle('dev.finance$');
   }
 
   async randomTransaction() {
