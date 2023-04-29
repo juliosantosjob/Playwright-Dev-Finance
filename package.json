@@ -6,10 +6,7 @@
   "scripts": {
     "test": "npx playwright test",
     "test:head": "npx playwright test --headed",
-    "allure:test": "npx playwright test --reporter=line,allure-playwright",
-    "allure:gener": "allure generate allure-results --clean -o allure-report",
-    "allure:history": "(if exist allure-report/history (move allure-report/history allure-results/history))",
-    "play:test": "npm-run-all allure:gener allure:test allure:history"
+    "allure:test": "npx playwright test --reporter=line,allure-playwright"
   },
   "keywords": [],
   "author": "",
