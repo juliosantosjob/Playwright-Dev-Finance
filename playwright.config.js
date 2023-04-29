@@ -2,28 +2,27 @@ import { defineConfig, devices } from '@playwright/test';
 
 require('dotenv').config();
 
-/**
- * @see https://playwright.dev/docs/test-configuration
- */
-
 export default defineConfig({
   testDir: './src/tests',
   fullyParallel: false,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
-  reporter: process.env.CI ? 'html' : 'line',
+  reporters: ['html', ['allure-playwright']],
 
   use: {
     baseURL: process.env.BASE_URL,
-    headless: false,
-    trace: 'on-first-retry',
+    screenshot: 'on',
+    headless: true,
   },
 
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: {
+        ...devices['Desktop Chrome'],
+        viewport: { width: 1920, height: 1080 }
+      }
     },
 
     // {

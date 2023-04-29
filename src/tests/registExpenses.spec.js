@@ -1,27 +1,27 @@
-import { test } from '@playwright/test';
 import { RegisterExpenses } from '../pages/registExpenses';
-import { HelperActions } from '../support/helperActions';
+import { Helper } from '../support/helper';
+import { test } from '@playwright/test';
 
 test.describe('All tests Regist', () => {
   let RegistPage;
-  let HelperAct;
+  let HelperPage;
 
-  test.beforeEach(async ({ page }) => { 
+  test.beforeEach(async ({ page }) => {
     RegistPage = new RegisterExpenses(page);
-    HelperAct = new HelperActions(page);
+    HelperPage = new Helper(page);
   });
 
   test('Registration of a new expense', async () => {
-    await HelperAct.goToApp();
+    await HelperPage.goToApp();
     await RegistPage.accessNewTransaction();
-    await RegistPage.registerTheData('Conta de Luz', '120', '2023-04-27');
+    await RegistPage.registerTheData('Conta de Luz', '120', '2023-04-28');
     await RegistPage.seeDescriptionLastRegister('Conta de Luz');
   });
 
-  test('Remove last expense register', async ({ page }) => {
-    await HelperAct.goToApp();
-    await RegistPage.accessNewTransaction();  
-    await HelperAct.randomTransaction();
+  test('Remove last expense register', async () => {
+    await HelperPage.goToApp();
+    await RegistPage.accessNewTransaction();
+    await HelperPage.randomTransaction();
     await RegistPage.removeLastRegister();
   });
 });

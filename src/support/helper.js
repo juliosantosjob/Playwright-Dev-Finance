@@ -1,7 +1,7 @@
 import data from './radomValue';
 import { expect } from '@playwright/test';
 
-export class HelperActions {
+export class Helper {
 
   constructor(page) {
     this.page = page;
