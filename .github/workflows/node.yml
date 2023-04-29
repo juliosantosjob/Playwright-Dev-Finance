@@ -21,4 +21,4 @@ jobs:
       - name: Run Playwright tests
         env:
           BASE_URL: ${{ secrets.BASE_URL }}
-        run: npm run play:test
+        run: npm run allure:test
