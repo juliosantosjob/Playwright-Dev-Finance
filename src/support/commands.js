@@ -18,8 +18,6 @@ export class Commands {
   async contains(locator, text) {
     const element = this.page.locator(locator);
     await expect(element).toContainText(text);
-
-    return this;
   }
 
   /**
@@ -34,7 +32,5 @@ export class Commands {
     const element = this.page.locator(locator);
     await expect(element).not.toBeVisible();
     await expect(element).toHaveCount(0);
-
-    return this;
   }
 }
