@@ -1,4 +1,4 @@
-import { Commands } from '../support/Commands';
+import { Commands } from '../support/commands';
 
 export class Amounts {
 
