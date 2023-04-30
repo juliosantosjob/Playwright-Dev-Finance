@@ -6,10 +6,10 @@
   "scripts": {
     "test": "npx playwright test",
     "test:head": "npx playwright test --headed",
-    "allure:test": "npx playwright test --reporter=line,allure-playwright"
+    "test:allure": "npx playwright test --reporter=line,allure-playwright"
   },
   "keywords": [],
-  "author": "",
+  "author": "Julio Santos",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.33.0",

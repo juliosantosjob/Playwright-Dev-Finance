@@ -17,8 +17,14 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+
+      - name: Install the allure-playwright
+        run: npm i -D allure-playwright
+
+      - name: Install the allure-commandline
+        run: npm i -D allure-commandline    
         
       - name: Run Playwright tests
         env:
           BASE_URL: ${{ secrets.BASE_URL }}
-        run: npm run allure:test
+        run: npm run test:allure
