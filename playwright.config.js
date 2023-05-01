@@ -13,6 +13,7 @@ export default defineConfig({
   use: {
     baseURL: process.env.BASE_URL,
     screenshot: 'on',
+    video: 'on',
     headless: true,
   },
 
