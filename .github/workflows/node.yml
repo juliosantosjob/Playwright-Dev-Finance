@@ -27,8 +27,8 @@ jobs:
         run: npm run test
 
       - name: move allure history
-        if: ./allure-report/history == 'true'
-        run: move allure-report/history allure-results/history
+        if: contains('/allure-report/history') == 'true'
+        run: echo "deu bom!"
 
       - name: Get Allure history
         uses: actions/checkout@v2
