@@ -20,15 +20,19 @@ jobs:
         
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
-        
-      - name: install allure commandline
-        run: npm i -D allure-commandline
       
       - name: Run Playwright tests
         env:
           BASE_URL: ${{ secrets.BASE_URL }}
         run: npm run test
-        
+
+      - name: move allure history
+        run: if [[ allure-report/history ]] 
+            then move allure-report/history allure-results/history 
+            else
+              echo "Folder not exist."
+            fi
+
       - name: Get Allure history
         uses: actions/checkout@v2
         if: always()
