@@ -27,11 +27,8 @@ jobs:
         run: npm run test
 
       - name: move allure history
-        run: if [[ allure-report/history ]] 
-            then move allure-report/history allure-results/history 
-            else
-              echo "Folder not exist."
-            fi
+        if: ./allure-report/history == 'true'
+        run: move allure-report/history allure-results/history
 
       - name: Get Allure history
         uses: actions/checkout@v2
