@@ -4,7 +4,7 @@ This is an example project, for test automation using Playwright Framework, usin
 
 ### Reports
 
-- I [See](https://juliosantosjob.github.io/Playwright-Dev-Finance) the result of the execution.
+- See the [results](https://juliosantosjob.github.io/Playwright-Dev-Finance) of the execution.
 
 ### Dependencies for project installation and execution.
 
