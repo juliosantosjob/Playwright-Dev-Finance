@@ -30,7 +30,7 @@ export class Commands {
 
   async notVisible(locator) {
     const element = this.page.locator(locator);
-    await expect(element).not.toBeVisible();
+    await expect(element).toBeHidden();
     await expect(element).toHaveCount(0);
   }
 }
