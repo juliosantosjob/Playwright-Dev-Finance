@@ -4,12 +4,13 @@
   "description": "Project automation of training",
   "main": "index.js",
   "scripts": {
+    "play:test": "npx playwright test",
     "allure:gener": "allure generate allure-results --clean -o allure-report",
     "allure:clean": "(if exist allure-results (rmdir /S /Q allure-results && mkdir allure-results))",
-    "play:test": "npx playwright test --reporter=line,allure-playwright",
+    "play:report": "npx playwright test --reporter=line,allure-playwright",
     "allure:history": "(if exist allure-report/history (move allure-report/history allure-results/history))",
-    "report:local": "npm-run-all allure:clean allure:gener play:test allure:history",
-    "test": "npm-run-all allure:gener play:test"
+    "report:local": "npm-run-all allure:clean allure:gener play:report allure:history",
+    "test": "npm-run-all allure:gener play:report"
   },
   "keywords": [],
   "author": "Julio Santos",
