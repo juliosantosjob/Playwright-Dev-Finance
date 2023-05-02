@@ -1,5 +1,5 @@
-import { RegisterExpenses } from '../pages/registExpenses';
-import { Amounts } from '../pages/amounts';
+import { RegisterExpenses } from '../pages/registExpenses.page';
+import { Amounts } from '../pages/amounts.page';
 import { Helper } from '../support/helper';
 import { test } from '@playwright/test';
 

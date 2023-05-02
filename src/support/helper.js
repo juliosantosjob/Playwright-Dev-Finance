@@ -20,7 +20,8 @@ export class Helper {
   async randomTransaction() {
     await this.page.fill('#description', this.radomDescrib);
     await this.page.fill('#amount', this.randomAmount);
-    await this.page.fill('#date', `${this.currentDate.getFullYear()}-${this.randomMonth}-${this.radonDay}`);
+    await this.page.fill('#date',
+      `${this.currentDate.getFullYear()}-${this.randomMonth}-${this.radonDay}`);
     await this.page.locator('.actions button').click();
   }
 }

@@ -14,9 +14,6 @@
         "semi": ["error", "always"],
         "quotes": ["error", "single"],
         "indent": [ "error", 2],
-        "max-len": [ "error", 100,
-            { "ignoreComments": true },
-            { "ignoreStrings": true }
-        ]
+        "max-len": [ "error", 100 ]
     }
 }
