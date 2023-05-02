@@ -1,4 +1,4 @@
-## Project Automation Playwright-Dev-Finance
+## Project Playwright-Dev-Finance
 
 This is an example project, for test automation using Playwright Framework, using the javascript language. This project was focused on E2E testing.
 
