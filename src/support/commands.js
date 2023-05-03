@@ -8,10 +8,8 @@ export class Commands {
 
   /**
    * Valid that the selector contains some the text especific.
-   * 
    * @param {string} locator Selector html.
    * @param {string} text text to assertion.
-   * 
    * ex: contains('#element', 'my text');
    */
 
@@ -22,9 +20,7 @@ export class Commands {
 
   /**
    * Valid that the selector is not be visible on page.
-   * 
    * @param {string} locator Selector html.
-   * 
    * ex: notVisible('#element');
    */
 
