@@ -1,4 +1,0 @@
-"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Mon May 01 18:05:26 GMT 2023","Mon May 01 18:05:27 GMT 2023","1087","chromium","","All tests Amounts","","","For each transaction, add the value in the ""total"" field",""
-"passed","Mon May 01 18:05:28 GMT 2023","Mon May 01 18:05:29 GMT 2023","629","chromium","","All tests Regist","","","Remove last expense register",""
-"passed","Mon May 01 18:05:27 GMT 2023","Mon May 01 18:05:28 GMT 2023","629","chromium","","All tests Regist","","","Registration of a new expense",""
