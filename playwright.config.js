@@ -19,7 +19,7 @@ export default defineConfig({
 
   projects: [
     {
-      name: 'chromium',
+      name: 'Google Chrome',
       use: {
         ...devices['Desktop Chrome'],
         viewport: { width: 1920, height: 1080 }
@@ -27,8 +27,16 @@ export default defineConfig({
     },
 
     // {
+    //   name: 'chromium',
+    //   use: {
+    //     ...devices['Desktop Chrome'],
+    //     viewport: { width: 1920, height: 1080 }
+    //   }
+    // },
+
+    // {
     //   name: 'firefox',
-    //   use: { 
+    //   use: {
     //     ...devices['Desktop Firefox'],
     //     viewport: { width: 1920, height: 1080 }
     //   },
@@ -36,7 +44,7 @@ export default defineConfig({
 
     // {
     //   name: 'webkit',
-    //   use: { 
+    //   use: {
     //     ...devices['Desktop Safari'],
     //     viewport: { width: 1920, height: 1080 }
     //   },
