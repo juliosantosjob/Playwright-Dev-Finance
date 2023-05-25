@@ -11,9 +11,9 @@ export default defineConfig({
   reporters: ['html', ['allure-playwright']],
 
   use: {
-    baseURL: process.env.BASE_URL,
+    baseURL: 'https://dev-finance.netlify.app',
     screenshot: 'on',
-    video: 'on',
+    video: 'off',
     headless: true,
   },
 
@@ -49,5 +49,6 @@ export default defineConfig({
     //     viewport: { width: 1920, height: 1080 }
     //   },
     // },
+    
   ],
 });

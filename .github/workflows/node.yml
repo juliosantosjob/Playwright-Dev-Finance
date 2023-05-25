@@ -28,9 +28,7 @@ jobs:
         run: npx playwright install --with-deps
       
       - name: Run Playwright tests
-        env:
-          BASE_URL: ${{ secrets.BASE_URL }}
-        run: npm run test
+        run: npm run play:test
 
       - name: Get Allure history
         uses: actions/checkout@v2
