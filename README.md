@@ -21,6 +21,11 @@ git clone https://github.com/juliosantosjob/Playwright-Dev-Finance.git
 ```
 npm install
 ```
+**Install navegators**
+
+```
+npx playwright install
+```
 **Run the project**
 
 ```
