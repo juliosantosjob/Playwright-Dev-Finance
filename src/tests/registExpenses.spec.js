@@ -1,27 +1,29 @@
 import { RegisterExpenses } from '../pages/registExpenses.page';
 import { Helper } from '../support/helper';
 import { test } from '@playwright/test';
+import radom from '../support/radomValue';
 
 test.describe('All tests Regist', () => {
-  let RegistPage;
-  let HelperPage;
+  let RegistPg;
+  let HelperPg;
+  const currentDate = radom.getCurrentDate();
 
   test.beforeEach(async ({ page }) => {
-    RegistPage = new RegisterExpenses(page);
-    HelperPage = new Helper(page);
+    RegistPg = new RegisterExpenses(page);
+    HelperPg = new Helper(page);
   });
 
   test('Registration of a new expense', async () => {
-    await HelperPage.goToApp();
-    await RegistPage.accessNewTransaction();
-    await RegistPage.registerTheData('Conta de Luz', '120', '2023-04-28');
-    await RegistPage.seeDescriptionLastRegister('Conta de Luz');
+    await HelperPg.goToApp();
+    await RegistPg.newTransact();
+    await RegistPg.registData('Conta de Luz', '120', currentDate);
+    await RegistPg.seeLastRegister('Conta de Luz');
   });
 
   test('Remove last expense register', async () => {
-    await HelperPage.goToApp();
-    await RegistPage.accessNewTransaction();
-    await HelperPage.randomTransaction();
-    await RegistPage.removeLastRegister();
+    await HelperPg.goToApp();
+    await RegistPg.newTransact();
+    await HelperPg.randomTransaction();
+    await RegistPg.removeLastRegister();
   });
 });

@@ -7,19 +7,19 @@ export class RegisterExpenses {
     this.comm = new Commands(page);
   }
 
-  async accessNewTransaction() {
+  async newTransact() {
     await this.page.locator('[class="button new"]').click();
     await this.comm.contains('div h2', 'Nova Transação');
   }
 
-  async registerTheData(description, amount, date) {
+  async registData(description, amount, date) {
     await this.page.fill('#description', description);
     await this.page.fill('#amount', amount);
     await this.page.fill('#date', date);
     await this.page.locator('.actions button').click();
   }
 
-  async seeDescriptionLastRegister(regist) {
+  async seeLastRegister(regist) {
     await this.comm.contains('tbody td:nth-child(1)', regist);
   }
 

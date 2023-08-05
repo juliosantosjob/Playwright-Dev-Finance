@@ -23,9 +23,19 @@ function getRandomMonth() {
   return month.toString().padStart(2, '0');
 }
 
+function getCurrentDate() {
+  const data = new Date();
+  const year = data.getFullYear();
+  const month = String(data.getMonth() + 1).padStart(2, '0');
+  const day = String(data.getDate()).padStart(2, '0');
+
+  return `${year}-${month}-${day}`;
+}
+
 export default {
   getRandomDescrib,
   getRandomAmount,
   getRandomDay,
-  getRandomMonth
+  getRandomMonth,
+  getCurrentDate
 };
