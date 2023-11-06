@@ -2,7 +2,7 @@ import { RegisterExpenses } from '../pages/registExpenses.page';
 import { Amounts } from '../pages/amounts.page';
 import { Helper } from '../support/helper';
 import { test } from '@playwright/test';
-import data, radom from '../support/radomValue';
+import * from '../support/radomValue';
 
 test.describe('All tests Amounts', () => {
   const randomAmount = data.getRandomAmount(120, 150);
