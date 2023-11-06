@@ -1,15 +1,13 @@
+import { getRandomAmount, getCurrentDate } from '../support/randomValue';
 import { RegisterExpenses } from '../pages/registExpenses.page';
 import { Amounts } from '../pages/amounts.page';
 import { Helper } from '../support/helper';
 import { test } from '@playwright/test';
-import * as radomValue from '../support/radomValue';
 
 test.describe('All tests Amounts', () => {
   const randomAmount = getRandomAmount(120, 150);
   const currentDate = getCurrentDate();
-  let HelperPg;
-  let RegistPg;
-  let AmountPg;
+  let HelperPg ,RegistPg, AmountPg;
 
   test.beforeEach(async ({ page }) => {
     RegistPg = new RegisterExpenses(page);

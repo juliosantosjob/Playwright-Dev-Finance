@@ -1,12 +1,11 @@
 import { RegisterExpenses } from '../pages/registExpenses.page';
 import { Helper } from '../support/helper';
 import { test } from '@playwright/test';
-import radom from '../support/radomValue';
+import { getCurrentDate } from '../support/randomValue';
 
 test.describe('All tests Regist', () => {
-  let RegistPg;
-  let HelperPg;
-  const currentDate = radom.getCurrentDate();
+  let RegistPg, HelperPg;
+  const currentDate = getCurrentDate();
 
   test.beforeEach(async ({ page }) => {
     RegistPg = new RegisterExpenses(page);

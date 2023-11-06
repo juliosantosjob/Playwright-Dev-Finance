@@ -1,14 +1,14 @@
-import data from './radomValue';
+import { getRandomDescrib, getRandomAmount, getRandomMonth, getRandomDay } from './randomValue';
 import { expect } from '@playwright/test';
 
 export class Helper {
 
   constructor(page) {
     this.page = page;
-    this.radomDescrib = data.getRandomDescrib();
-    this.randomAmount = data.getRandomAmount(150, 200);
-    this.randomMonth = data.getRandomMonth();
-    this.radonDay = data.getRandomDay();
+    this.radomDescrib = getRandomDescrib();
+    this.randomAmount = getRandomAmount(150, 200);
+    this.randomMonth = getRandomMonth();
+    this.radonDay = getRandomDay();
     this.currentDate = new Date();
   }
 

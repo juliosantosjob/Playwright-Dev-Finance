@@ -1,4 +1,4 @@
-function getRandomDescrib() {
+export function getRandomDescrib() {
   const expenses = [
     'Carro', 'Casa', 'Luz', 'Roupa', 'Crédito para Celular',
     'Presente para Esposa', 'Ifood', 'Internet', 'Gás'
@@ -8,22 +8,22 @@ function getRandomDescrib() {
   return expenses[random];
 }
 
-function getRandomAmount(max, min) {
+export function getRandomAmount(max, min) {
   const value = Math.floor(Math.random() * (max - min + 1) + min);
   return value.toString();
 }
 
-function getRandomDay() {
+export function getRandomDay() {
   const day = Math.floor((Math.random() * 31) + 1);
   return day.toString().padStart(2, '0');
 }
 
-function getRandomMonth() {
+export function getRandomMonth() {
   const month = Math.floor(Math.random() * 12) + 1;
   return month.toString().padStart(2, '0');
 }
 
-function getCurrentDate() {
+export function getCurrentDate() {
   const data = new Date();
   const year = data.getFullYear();
   const month = String(data.getMonth() + 1).padStart(2, '0');
@@ -31,11 +31,3 @@ function getCurrentDate() {
 
   return `${year}-${month}-${day}`;
 }
-
-export default {
-  getRandomDescrib,
-  getRandomAmount,
-  getRandomDay,
-  getRandomMonth,
-  getCurrentDate
-};
