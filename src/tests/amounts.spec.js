@@ -5,8 +5,8 @@ import { test } from '@playwright/test';
 import * as radomValue from '../support/radomValue';
 
 test.describe('All tests Amounts', () => {
-  const randomAmount = data.getRandomAmount(120, 150);
-  const currentDate = radom.getCurrentDate();
+  const randomAmount = getRandomAmount(120, 150);
+  const currentDate = getCurrentDate();
   let HelperPg;
   let RegistPg;
   let AmountPg;
