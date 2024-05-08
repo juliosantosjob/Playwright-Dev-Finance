@@ -1,5 +1,0 @@
-"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Wed Apr 24 20:12:36 GMT 2024","Wed Apr 24 20:12:37 GMT 2024","1177","Google Chrome","","All tests Amounts","","","For each transaction, add the value in the ""total"" field",""
-"passed","Wed Apr 24 20:12:38 GMT 2024","Wed Apr 24 20:12:38 GMT 2024","516","Google Chrome","","All tests Regist","","","Registration of a new expense",""
-"passed","Wed Apr 24 20:12:38 GMT 2024","Wed Apr 24 20:12:39 GMT 2024","480","Google Chrome","","All tests Regist","","","Remove last expense register",""
-"passed","Wed Apr 24 20:12:37 GMT 2024","Wed Apr 24 20:12:38 GMT 2024","478","Google Chrome","","All tests Amounts","","","For each transaction, add the value in the ""Entradas"" field",""
