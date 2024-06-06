@@ -7,14 +7,12 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
   reporters: ['html', ['allure-playwright']],
-
   use: {
     baseURL: 'https://dev-finance.netlify.app',
     screenshot: 'on',
     video: 'off',
     headless: true,
   },
-
   projects: [
     {
       name: 'Google Chrome',
@@ -23,30 +21,28 @@ export default defineConfig({
         viewport: { width: 1920, height: 1080 }
       }
     },
-
-    // {
-    //   name: 'chromium',
-    //   use: {
-    //     ...devices['Desktop Chrome'],
-    //     viewport: { width: 1920, height: 1080 }
-    //   }
-    // },
-
-    // {
-    //   name: 'firefox',
-    //   use: {
-    //     ...devices['Desktop Firefox'],
-    //     viewport: { width: 1920, height: 1080 }
-    //   },
-    // },
-
-    // {
-    //   name: 'webkit',
-    //   use: {
-    //     ...devices['Desktop Safari'],
-    //     viewport: { width: 1920, height: 1080 }
-    //   },
-    // },
-    
+    /*
+    {
+      name: 'chromium',
+      use: {
+        ...devices['Desktop Chrome'],
+        viewport: { width: 1920, height: 1080 }
+      }
+    },
+    {
+      name: 'firefox',
+      use: {
+        ...devices['Desktop Firefox'],
+        viewport: { width: 1920, height: 1080 }
+      },
+    },
+    {
+      name: 'webkit',
+      use: {
+        ...devices['Desktop Safari'],
+        viewport: { width: 1920, height: 1080 }
+      },
+    },
+    */
   ],
 });

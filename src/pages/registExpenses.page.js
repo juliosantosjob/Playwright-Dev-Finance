@@ -1,30 +1,41 @@
-import { Commands } from '../support/commands';
+import { expect } from '@playwright/test';
 
-export class RegisterExpenses {
-
+export class RegistExpensesPage {
   constructor(page) {
     this.page = page;
-    this.comm = new Commands(page);
   }
 
-  async newTransact() {
+  async openApp() {
+    await this.page.goto('/');
+    await expect(this.page).toHaveTitle('dev.finance$');
+  }
+
+  async selectNewTransaction() {
     await this.page.locator('[class="button new"]').click();
-    await this.comm.contains('div h2', 'Nova Transação');
+
+    const btnNewTransaction = this.page.locator('div h2');
+    await expect(btnNewTransaction).toContainText('Nova Transação');
   }
 
-  async registData(description, amount, date) {
-    await this.page.fill('#description', description);
-    await this.page.fill('#amount', amount);
-    await this.page.fill('#date', date);
+  async registerExpense(expense) {
+    await this.page.fill('#description', expense.description);
+    await this.page.fill('#amount', expense.amount);
+    await this.page.fill('#date', expense.date);
     await this.page.locator('.actions button').click();
   }
 
-  async seeLastRegister(regist) {
-    await this.comm.contains('tbody td:nth-child(1)', regist);
+  async itRegistered(expense) {
+    const lastRegister = this.page.locator('tbody tr:nth-child(1)');
+    await expect(lastRegister).toContainText(expense.description);
+    await expect(lastRegister).toContainText(expense.amount);
+
+    const newExpense = expense.date.split('-').reverse().join('/');
+    await expect(lastRegister).toContainText(newExpense);
   }
 
   async removeLastRegister() {
-    await this.page.locator('tbody :nth-child(1) img').click();
-    await this.comm.notVisible('tbody :nth-child(1)');
+    await this.page.locator('tbody tr:nth-child(1) img').click();
+    const element = this.page.locator('tbody tr:nth-child(1)');
+    await expect(element).toBeHidden();
   }
 }

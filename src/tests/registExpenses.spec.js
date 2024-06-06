@@ -1,28 +1,26 @@
-import { RegisterExpenses } from '../pages/registExpenses.page';
-import { Helper } from '../support/helper';
+import { RegistExpensesPage } from '../pages/registExpenses.page';
+import { newExpense } from '../samples/expenses';
 import { test } from '@playwright/test';
-import { getCurrentDate } from '../support/randomValue';
 
-test.describe('All tests Regist', () => {
-  let RegistPg, HelperPg;
-  const currentDate = getCurrentDate();
+test.describe('All tests for Registration', () => {
+  let registPage;
 
   test.beforeEach(async ({ page }) => {
-    RegistPg = new RegisterExpenses(page);
-    HelperPg = new Helper(page);
+    registPage = new RegistExpensesPage(page);
   });
 
   test('Registration of a new expense', async () => {
-    await HelperPg.goToApp();
-    await RegistPg.newTransact();
-    await RegistPg.registData('Conta de Luz', '120', currentDate);
-    await RegistPg.seeLastRegister('Conta de Luz');
+    await registPage.openApp();
+    await registPage.selectNewTransaction();
+    await registPage.registerExpense(newExpense);
+    await registPage.itRegistered(newExpense);
   });
 
   test('Remove last expense register', async () => {
-    await HelperPg.goToApp();
-    await RegistPg.newTransact();
-    await HelperPg.randomTransaction();
-    await RegistPg.removeLastRegister();
+    await registPage.openApp();
+    await registPage.selectNewTransaction();
+    await registPage.registerExpense(newExpense);
+    await registPage.itRegistered(newExpense);
+    await registPage.removeLastRegister();
   });
 });

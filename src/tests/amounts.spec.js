@@ -1,31 +1,29 @@
-import { getRandomAmount, getCurrentDate } from '../support/randomValue';
-import { RegisterExpenses } from '../pages/registExpenses.page';
-import { Amounts } from '../pages/amounts.page';
-import { Helper } from '../support/helper';
+import { RegistExpensesPage } from '../pages/registExpenses.page';
+import { AmountsPage } from '../pages/amounts.page';
+import { newExpense } from '../samples/expenses';
 import { test } from '@playwright/test';
 
-test.describe('All tests Amounts', () => {
-  const randomAmount = getRandomAmount(120, 150);
-  const currentDate = getCurrentDate();
-  let HelperPg ,RegistPg, AmountPg;
+test.describe('All tests for Amounts', () => {
+  let registPage, amountPage;
 
   test.beforeEach(async ({ page }) => {
-    RegistPg = new RegisterExpenses(page);
-    HelperPg = new Helper(page);
-    AmountPg = new Amounts(page);
+    registPage = new RegistExpensesPage(page);
+    amountPage = new AmountsPage(page);
   });
 
   test('For each transaction, add the value in the "total" field', async () => {
-    await HelperPg.goToApp();
-    await RegistPg.newTransact();
-    await RegistPg.registData('Boleto', randomAmount, currentDate);
-    await AmountPg.seeAmountWithMore(randomAmount);
+    await registPage.openApp();
+    await registPage.selectNewTransaction();
+    await registPage.registerExpense(newExpense);
+    await registPage.itRegistered(newExpense);
+    await amountPage.seeTotalAmount(newExpense);
   });
 
   test('For each transaction, add the value in the "Entradas" field', async () => {
-    await HelperPg.goToApp();
-    await RegistPg.newTransact();
-    await RegistPg.registData('Boleto', randomAmount, currentDate);
-    await AmountPg.seeAmountIncome(randomAmount);
+    await registPage.openApp();
+    await registPage.selectNewTransaction();
+    await registPage.registerExpense(newExpense);
+    await registPage.itRegistered(newExpense);
+    await amountPage.seeAmountIncome(newExpense);
   });
 });
