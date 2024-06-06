@@ -1,4 +1,4 @@
-import { getCurrentDate, rand } from '../support/dynamics';
+import { getCurrentDate, rand } from '../support/helpers';
 
 const describeExpense = [
   'Carro', 'Casa', 'Luz', 'Roupa', 'Crédito para Celular',
