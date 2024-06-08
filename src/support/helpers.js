@@ -6,7 +6,7 @@ export function rand(arg1, earg2) {
     const randomNumber = Math.floor(Math.random() * (arg1 - arg2 + 1) + arg2);
     return randomNumber.toString();
   } else {
-    throw new Error('Invalid parameters. Use an array or two numbers.');
+    throw console.log('Invalid parameters. Use an array or two numbers.');
   }
 }
 
