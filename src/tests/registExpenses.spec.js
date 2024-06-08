@@ -16,14 +16,12 @@ test.describe('All tests for Registration', () => {
   });
 
   test('Registration of a new expense', async () => {
-    await registPage.openApp();
     await registPage.selectNewTransaction();
     await registPage.registerExpense(newExpense);
     await registPage.itRegistered(newExpense);
   });
 
   test('Remove last expense register', async () => {
-    await registPage.openApp();
     await registPage.selectNewTransaction();
     await registPage.registerExpense(newExpense);
     await registPage.itRegistered(newExpense);
