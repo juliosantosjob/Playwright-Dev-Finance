@@ -6,7 +6,7 @@ import { test } from '@playwright/test';
 test.describe('All tests for Amounts', () => {
   let registPage, amountPage;
 
- /* hook for instances of classes */
+  /* hook for instances of classes */
   test.beforeEach(async ({ page }) => {
     registPage = new RegistExpensesPage(page);
     amountPage = new AmountsPage(page);
