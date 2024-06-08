@@ -30,7 +30,7 @@ export class RegistExpensesPage {
     await expect(lastRegister).toContainText(expense.description);
     await expect(lastRegister).toContainText(expense.amount);
 
-    const newExpense = expense.date.split('-').reverse().join('/');
+    const newExpense = expense.date.replace('-', '/');
     await expect(lastRegister).toContainText(newExpense);
   }
 
