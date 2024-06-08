@@ -5,15 +5,11 @@ import { test } from '@playwright/test';
 
 test.describe('All tests for Amounts', () => {
   let registPage, amountPage;
-
-  /* hook for instances of classes */
+  
   test.beforeEach(async ({ page }) => {
     registPage = new RegistExpensesPage(page);
     amountPage = new AmountsPage(page);
-  });
-  
-  /* hooks for testing */
-  test.beforeEach(async ({ page }) => {
+    
     await registPage.openApp();
     await registPage.selectNewTransaction();
     await registPage.registerExpense(newExpense);
