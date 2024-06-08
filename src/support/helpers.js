@@ -1,10 +1,14 @@
-export function rand(max, min) {
-  if (min === undefined) {
-    const r = Math.floor(Math.random() * max.length);
-    return max[r];
+export function rand(arg1, earg2) {
+  if (Array.isArray(arg1)) {
+      const randomIndex = Math.floor(Math.random() * arg1.length);
+      return arg1[randomIndex];
+  } else if (typeof arg1 === 'number' && typeof arg2 === 'number') {
+      const randomNumber = Math.floor(Math.random() * (arg1 - arg2 + 1) + arg2);
+      return randomNumber.toString();
+  } else {
+      throw new Error("Invalid parameters. Use an array or two numbers.");
   }
-  return Math.floor(Math.random() * (max - min + 1) + min).toString();
-};
+}
 
 export function getCurrentDate() {
   const data = new Date();
