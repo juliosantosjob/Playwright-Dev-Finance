@@ -2,7 +2,7 @@ import { RegistExpensesPage } from '../pages/registExpenses.page';
 import { newExpense } from '../samples/expenses';
 import { test } from '@playwright/test';
 
-test.describe('All tests for Registration', () => {
+test.describe('Register', () => {
   let registPage;
   
   test.beforeEach(async ({ page }) => {
