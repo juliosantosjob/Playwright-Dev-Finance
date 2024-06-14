@@ -3,7 +3,7 @@ import { AmountsPage } from '../pages/amounts.page';
 import { newExpense } from '../samples/expenses';
 import { test } from '@playwright/test';
 
-test.describe('All tests for Amounts', () => {
+test.describe('Amounts manager', () => {
   let registPage, amountPage;
   
   test.beforeEach(async ({ page }) => {
