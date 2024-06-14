@@ -8,7 +8,7 @@ const describeExpense = [
 module.exports = {
   newExpense: {
     description: rand(describeExpense),
-    amount: rand(200, 10),
+    amount: rand(20, 200),
     date: getCurrentDate(),
   }
 };
