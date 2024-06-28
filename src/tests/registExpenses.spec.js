@@ -17,8 +17,8 @@ test.describe('Register', () => {
     await registPage.itRegistered(newExpense);
   });
 
-  test('Remove last expense register', async () => {
-    await registPage.itRegistered(newExpense);
-    await registPage.removeLastRegister();
+  test('Remove expense register', async () => {
+    await registPage.removeRegister(newExpense);
+    await registPage.verifyExpenseRemoved(newExpense);
   });
 });

@@ -1,7 +1,7 @@
 import { expect } from '@playwright/test';
 
 export class RegistExpensesPage {
-  
+
   constructor(page) {
     this.page = page;
   }
@@ -34,9 +34,14 @@ export class RegistExpensesPage {
     await expect(lastRegister).toContainText(newExpense);
   }
 
-  async removeLastRegister() {
-    await this.page.locator('tbody tr:nth-child(1) img').click();
-    const element = this.page.locator('tbody tr:nth-child(1)');
-    await expect(element).toBeHidden();
+  async removeRegister(expense) {
+    await this.page.locator('tr').filter({ hasText: expense.description })
+      .locator('img')
+      .click();
+  }
+
+  async verifyExpenseRemoved(expense) {
+    await expect(this.page.locator('tr', { hasText: expense.description }))
+      .toBeHidden();
   }
 }
