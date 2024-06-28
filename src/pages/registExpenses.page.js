@@ -27,11 +27,11 @@ export class RegistExpensesPage {
 
   async itRegistered(expense) {
     const lastRegister = this.page.locator('tbody tr:nth-child(1)');
-    const expenseReformatted = expense.date.split('-').reverse().join('/');
+    const expenseDate = expense.date.split('-').reverse().join('/');
     
     await expect(lastRegister).toContainText(expense.description);
     await expect(lastRegister).toContainText(expense.amount);
-    await expect(lastRegister).toContainText(expenseReformatted);
+    await expect(lastRegister).toContainText(expenseDate);
   }
 
   async removeRegister(expense) {
