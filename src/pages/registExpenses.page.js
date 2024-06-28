@@ -35,13 +35,15 @@ export class RegistExpensesPage {
   }
 
   async removeRegister(expense) {
-    await this.page.locator('tr').filter({ hasText: expense.description })
+    await this.page.locator('tr')
+      .filter({ hasText: expense.description })
       .locator('img')
       .click();
   }
 
   async verifyExpenseRemoved(expense) {
-    await expect(this.page.locator('tr', { hasText: expense.description }))
+    await expect(
+      this.page.locator('tr', { hasText: expense.description }))
       .toBeHidden();
   }
 }
