@@ -7,17 +7,19 @@ test.describe('Register', () => {
   
   test.beforeEach(async ({ page }) => {
     registPage = new RegistExpensesPage(page);
-    
-    await registPage.openApp();
-    await registPage.selectNewTransaction();
-    await registPage.registerExpense(newExpense);
   });
 
   test('Registration of a new expense', async () => {
+    await registPage.openApp();
+    await registPage.selectNewTransaction();
+    await registPage.registerExpense(newExpense);
     await registPage.itRegistered(newExpense);
   });
 
   test('Remove expense register', async () => {
+    await registPage.openApp();
+    await registPage.selectNewTransaction();
+    await registPage.registerExpense(newExpense);
     await registPage.removeRegister(newExpense);
     await registPage.verifyExpenseRemoved(newExpense);
   });
