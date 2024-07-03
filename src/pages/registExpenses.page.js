@@ -14,10 +14,6 @@ export class RegistExpensesPage {
   async selectNewTransaction() {
     await this.page.locator('a')
       .filter({ hasText: 'Nova Transação' }).click();
-
-
-    await this.page.locator('button')
-      .filter({ hasText: 'Salvar' }).click();
   }
 
   async registerExpense(expense) {
