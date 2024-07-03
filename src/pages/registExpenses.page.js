@@ -6,7 +6,7 @@ export class RegistExpensesPage {
     this.page = page;
   }
 
-  async openApp() {
+  async open() {
     await this.page.goto('/');
     await expect(this.page).toHaveTitle('dev.finance$');
   }

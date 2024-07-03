@@ -9,18 +9,20 @@ test.describe('Amounts manager', () => {
   test.beforeEach(async ({ page }) => {
     registPage = new RegistExpensesPage(page);
     amountPage = new AmountsPage(page);
-    
-    await registPage.openApp();
-    await registPage.selectNewTransaction();
-    await registPage.registerExpense(newExpense);
-    await registPage.itRegistered(newExpense);
   });
 
   test('For each transaction, add the value in the "total" field', async () => {
+    await registPage.open();
+    await registPage.selectNewTransaction();
+    await registPage.registerExpense(newExpense);
+    await registPage.itRegistered(newExpense);
     await amountPage.seeTotalAmount(newExpense);
   });
 
   test('For each transaction, add the value in the "Entradas" field', async () => {
+    await registPage.open();
+    await registPage.selectNewTransaction();
+    await registPage.registerExpense(newExpense);
     await amountPage.seeAmountIncome(newExpense);
   });
 });

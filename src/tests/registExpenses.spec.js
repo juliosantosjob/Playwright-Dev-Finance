@@ -10,14 +10,14 @@ test.describe('Register', () => {
   });
 
   test('Registration of a new expense', async () => {
-    await registPage.openApp();
+    await registPage.open();
     await registPage.selectNewTransaction();
     await registPage.registerExpense(newExpense);
     await registPage.itRegistered(newExpense);
   });
 
   test('Remove expense register', async () => {
-    await registPage.openApp();
+    await registPage.open();
     await registPage.selectNewTransaction();
     await registPage.registerExpense(newExpense);
     await registPage.removeRegister(newExpense);
