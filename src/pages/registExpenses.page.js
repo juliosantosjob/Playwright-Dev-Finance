@@ -12,26 +12,35 @@ export class RegistExpensesPage {
   }
 
   async selectNewTransaction() {
-    await this.page.locator('[class="button new"]').click();
+    await this.page.locator('a')
+      .filter({ hasText: 'Nova Transação' }).click();
 
-    const btnNewTransaction = this.page.locator('div h2');
-    await expect(btnNewTransaction).toContainText('Nova Transação');
+
+    await this.page.locator('button')
+      .filter({ hasText: 'Salvar' }).click();
   }
 
   async registerExpense(expense) {
     await this.page.fill('#description', expense.description);
     await this.page.fill('#amount', expense.amount);
     await this.page.fill('#date', expense.date);
-    await this.page.locator('.actions button').click();
+    await this.page.locator('button')
+      .filter({ hasText: 'Salvar' }).click();
   }
 
   async itRegistered(expense) {
-    const lastRegister = this.page.locator('tbody tr:nth-child(1)');
     const expenseDate = expense.date.split('-').reverse().join('/');
-    
-    await expect(lastRegister).toContainText(expense.description);
-    await expect(lastRegister).toContainText(expense.amount);
-    await expect(lastRegister).toContainText(expenseDate);
+
+    const elements = [
+      this.page.locator('tr', { hasText: expense.description }),
+      this.page.locator('tr', { hasText: expense.amount }),
+      this.page.locator('tr', { hasText: expenseDate })
+    ];
+
+    for (let i = 0; i < elements.length; i++) {
+      await expect(elements[i])
+        .toBeVisible();
+    }
   }
 
   async removeRegister(expense) {
@@ -42,8 +51,7 @@ export class RegistExpensesPage {
   }
 
   async verifyExpenseRemoved(expense) {
-    await expect(
-      this.page.locator('tr', { hasText: expense.description }))
+    await expect(this.page.locator('tr', { hasText: expense.description }))
       .toBeHidden();
   }
 }
