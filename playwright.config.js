@@ -11,7 +11,7 @@ export default defineConfig({
     baseURL: 'https://dev-finance.netlify.app',
     screenshot: 'on',
     video: 'off',
-    headless: false,
+    headless: true,
   },
   projects: [
     {
