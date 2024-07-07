@@ -10,13 +10,13 @@ export class AmountsPage {
     await expect(
       this.page.locator('#totalDisplay'))
       .filter({ hasText: expectedTotal })
-      .toBeVisible());
+      .toBeVisible();
   }
 
   async seeAmountIncome(vlLaunch) {
     await expect(
       this.page.locator('#incomeDisplay'))
       .filter({ hasText: vlLaunch })
-      .toBeVisible());
+      .toBeVisible();
   }
 }
