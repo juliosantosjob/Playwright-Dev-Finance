@@ -1,28 +1,30 @@
 import { RegistExpensesPage } from '../pages/registExpenses.page';
 import { AmountsPage } from '../pages/amounts.page';
-import { newExpense } from '../samples/expenses';
-import { test } from '@playwright/test';
+import test from '../samples/fixtures';
 
 test.describe('Amounts manager', () => {
   let registPage, amountPage;
-  
+
   test.beforeEach(async ({ page }) => {
     registPage = new RegistExpensesPage(page);
     amountPage = new AmountsPage(page);
   });
 
-  test('For each transaction, add the value in the "total" field', async () => {
+  test('For each transaction, add the value in the "total" field', async ({ expenseFactory }) => {
+    const expense = await expenseFactory();
     await registPage.open();
     await registPage.selectNewTransaction();
-    await registPage.registerExpense(newExpense);
-    await registPage.itRegistered(newExpense);
-    await amountPage.seeTotalAmount(newExpense);
+    await registPage.registerExpense(expense);
+    await registPage.itRegistered(expense);
+    await amountPage.seeTotalAmount(expense);
   });
 
-  test('For each transaction, add the value in the "Entradas" field', async () => {
-    await registPage.open();
-    await registPage.selectNewTransaction();
-    await registPage.registerExpense(newExpense);
-    await amountPage.seeAmountIncome(newExpense);
-  });
+  test('For each transaction, add the value in the "Entradas" field',
+    async ({ expenseFactory }) => {
+      const expense = await expenseFactory();
+      await registPage.open();
+      await registPage.selectNewTransaction();
+      await registPage.registerExpense(expense);
+      await amountPage.seeAmountIncome(expense);
+    });
 });

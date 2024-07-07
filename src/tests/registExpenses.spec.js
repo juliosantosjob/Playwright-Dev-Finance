@@ -1,6 +1,5 @@
 import { RegistExpensesPage } from '../pages/registExpenses.page';
-import { newExpense } from '../samples/expenses';
-import { test } from '@playwright/test';
+const test = require('../samples/fixtures');
 
 test.describe('Register', () => {
   let registPage;
@@ -9,18 +8,20 @@ test.describe('Register', () => {
     registPage = new RegistExpensesPage(page);
   });
 
-  test('Registration of a new expense', async () => {
+  test('Registration of a new expense', async ({ expenseFactory }) => {
+    const expense = await expenseFactory();
     await registPage.open();
     await registPage.selectNewTransaction();
-    await registPage.registerExpense(newExpense);
-    await registPage.itRegistered(newExpense);
+    await registPage.registerExpense(expense);
+    await registPage.itRegistered(expense);
   });
 
-  test('Remove expense register', async () => {
+  test('Remove expense register', async ({ expenseFactory}) => {
+    const expense = await expenseFactory();
     await registPage.open();
     await registPage.selectNewTransaction();
-    await registPage.registerExpense(newExpense);
-    await registPage.removeRegister(newExpense);
-    await registPage.verifyExpenseRemoved(newExpense);
+    await registPage.registerExpense(expense);
+    await registPage.removeRegister(expense);
+    await registPage.verifyExpenseRemoved(expense);
   });
 });
