@@ -7,12 +7,16 @@ export class AmountsPage {
   }
 
   async seeTotalAmount(expectedTotal) {
-    const element = this.page.locator('#totalDisplay');
-    await expect(element).toContainText(expectedTotal.amount);
+    await expect(
+      this.page.locator('#totalDisplay'))
+      .filter({ hasText: expectedTotal })
+      .toBeVisible());
   }
 
   async seeAmountIncome(vlLaunch) {
-    const element = this.page.locator('#incomeDisplay');
-    await expect(element).toContainText(vlLaunch.amount);
+    await expect(
+      this.page.locator('#incomeDisplay'))
+      .filter({ hasText: vlLaunch })
+      .toBeVisible());
   }
 }
