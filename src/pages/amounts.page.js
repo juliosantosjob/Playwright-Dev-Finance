@@ -8,15 +8,15 @@ export class AmountsPage {
 
   async seeTotalAmount(expectedTotal) {
     await expect(
-      this.page.locator('#totalDisplay'))
+      this.page.locator('#totalDisplay')
       .filter({ hasText: expectedTotal })
-      .toBeVisible();
+      .toBeVisible());
   }
 
   async seeAmountIncome(vlLaunch) {
     await expect(
-      this.page.locator('#incomeDisplay'))
+      this.page.locator('#incomeDisplay')
       .filter({ hasText: vlLaunch })
-      .toBeVisible();
+      .toBeVisible());
   }
 }
