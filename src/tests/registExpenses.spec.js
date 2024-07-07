@@ -1,5 +1,5 @@
 import { RegistExpensesPage } from '../pages/registExpenses.page';
-const test = require('../samples/fixtures');
+import test from '../samples/fixtures';
 
 test.describe('Register', () => {
   let registPage;
