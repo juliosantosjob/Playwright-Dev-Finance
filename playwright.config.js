@@ -15,20 +15,13 @@ export default defineConfig({
   },
   projects: [
     {
-      name: 'Google Chrome',
-      use: {
-        ...devices['Desktop Chrome'],
-        viewport: { width: 1920, height: 1080 }
-      }
-    },
-    /*
-    {
       name: 'chromium',
       use: {
         ...devices['Desktop Chrome'],
         viewport: { width: 1920, height: 1080 }
       }
-    },
+    }
+    /*
     {
       name: 'firefox',
       use: {
