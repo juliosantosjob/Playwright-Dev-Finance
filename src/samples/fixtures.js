@@ -4,14 +4,15 @@ import {
   rand
 } from '../support/helpers';
 
+const describeExpense = [
+  'Carro', 'Casa', 'Luz',
+  'Roupa', 'Crédito para Celular', 'Presente para Esposa',
+  'Ifood', 'Internet', 'Gás'
+];
+
 module.exports = base.test.extend({
   expenseFactory: async ({ }, use) => {
     await use(async () => {
-      const describeExpense = [
-        'Carro', 'Casa', 'Luz', 'Roupa', 'Crédito para Celular',
-        'Presente para Esposa', 'Ifood', 'Internet', 'Gás'
-      ];
-
       return {
         description: rand(describeExpense),
         amount: rand(20, 200),

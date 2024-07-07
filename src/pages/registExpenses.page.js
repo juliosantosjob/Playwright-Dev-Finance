@@ -27,14 +27,14 @@ export class RegistExpensesPage {
   async itRegistered(expense) {
     const expenseDate = expense.date.split('-').reverse().join('/');
 
-    const elements = [
-      this.page.locator('tr', { hasText: expense.description }),
-      this.page.locator('tr', { hasText: expense.amount }),
-      this.page.locator('tr', { hasText: expenseDate })
+    const expenseRequirements = [
+      { hasText: expense.description },
+      { hasText: expense.amount },
+      { hasText: expenseDate }
     ];
 
-    for (let i = 0; i < elements.length; i++) {
-      await expect(elements[i])
+    for (let indix = 0; indix < expenseRequirements.length; indix++) {
+      await expect(this.page.locator('tr', expenseRequirements[indix]))
         .toBeVisible();
     }
   }
