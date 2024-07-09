@@ -1,6 +1,6 @@
-import { RegistExpensesPage } from '../pages/registExpenses.page';
-import { AmountsPage } from '../pages/amounts.page';
-import test from '../samples/fixtures';
+const { RegistExpensesPage } = require('../pages/registExpenses.page');
+const { AmountsPage } = require('../pages/amounts.page');
+const test = require('../samples/fixtures');
 
 test.describe('Amounts manager', () => {
   let registPage, amountPage;
