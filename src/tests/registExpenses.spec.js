@@ -1,4 +1,4 @@
-import test from '../samples/fixtures';
+import test from '../support/fixtures';
 
 test.describe('Register', () => {
   test('Registration of a new expense', async ({ registPage, expenseFactory }) => {
@@ -10,7 +10,7 @@ test.describe('Register', () => {
     await registPage.itRegistered(expense);
   });
 
-  test('Remove expense register', async ({ registPage, expenseFactory}) => {
+  test('Remove expense register', async ({ registPage, expenseFactory }) => {
     const expense = await expenseFactory();
 
     await registPage.open();

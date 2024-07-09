@@ -1,4 +1,4 @@
-import test from '../samples/fixtures';
+import test from '../support/fixtures';
 
 test.describe('Amounts', () => {
   test('For each transaction, add the value in the "total" field', async ({

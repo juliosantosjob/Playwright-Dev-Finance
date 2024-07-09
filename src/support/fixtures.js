@@ -1,7 +1,7 @@
 import { test as base } from '@playwright/test';
 import { RegistExpensesPage } from '../pages/registExpenses.page';
 import { AmountsPage } from '../pages/amounts.page';
-import { getCurrentDate, rand } from '../support/helpers';
+import { getCurrentDate, rand } from './helpers';
 
 const describeExpense = [
   'Carro', 'Casa', 'Luz',
@@ -9,15 +9,14 @@ const describeExpense = [
   'Ifood', 'Internet', 'Gás'
 ];
 
-module.exports = base.test.extend({
+export default base.test.extend({
   expenseFactory: async ({ }, use) => {
-    await use(async () => {
-      return {
-        description: rand(describeExpense),
-        amount: rand(20, 200),
-        date: getCurrentDate(),
-      };
-    });
+    const data = {
+      description: rand(describeExpense),
+      amount: rand(20, 200),
+      date: getCurrentDate(),
+    };
+    await use(() => data);
   },
 
   registPage: async ({ page }, use) => {
