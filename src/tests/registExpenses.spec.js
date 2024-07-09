@@ -1,23 +1,18 @@
-const { RegistExpensesPage } = require('../pages/registExpenses.page');
-const test = require('../samples/fixtures');
+import test from '../samples/fixtures';
 
 test.describe('Register', () => {
-  let registPage;
-  
-  test.beforeEach(async ({ page }) => {
-    registPage = new RegistExpensesPage(page);
-  });
-
-  test('Registration of a new expense', async ({ expenseFactory }) => {
+  test('Registration of a new expense', async ({ registPage, expenseFactory }) => {
     const expense = await expenseFactory();
+
     await registPage.open();
     await registPage.selectNewTransaction();
     await registPage.registerExpense(expense);
     await registPage.itRegistered(expense);
   });
 
-  test('Remove expense register', async ({ expenseFactory}) => {
+  test('Remove expense register', async ({ registPage, expenseFactory}) => {
     const expense = await expenseFactory();
+
     await registPage.open();
     await registPage.selectNewTransaction();
     await registPage.registerExpense(expense);

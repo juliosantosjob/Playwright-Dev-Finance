@@ -1,8 +1,7 @@
-import base from '@playwright/test';
-import {
-  getCurrentDate,
-  rand
-} from '../support/helpers';
+import { test as base } from '@playwright/test';
+import { RegistExpensesPage } from '../pages/registExpenses.page';
+import { AmountsPage } from '../pages/amounts.page';
+import { getCurrentDate, rand } from '../support/helpers';
 
 const describeExpense = [
   'Carro', 'Casa', 'Luz',
@@ -19,5 +18,15 @@ module.exports = base.test.extend({
         date: getCurrentDate(),
       };
     });
+  },
+
+  registPage: async ({ page }, use) => {
+    const registPage = new RegistExpensesPage(page);
+    await use(registPage);
+  },
+
+  amountPage: async ({ page }, use) => {
+    const amountPage = new AmountsPage(page);
+    await use(amountPage);
   }
 });
