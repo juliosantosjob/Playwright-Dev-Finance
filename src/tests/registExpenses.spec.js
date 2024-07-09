@@ -1,5 +1,5 @@
-import { RegistExpensesPage } from '../pages/registExpenses.page';
-import test from '../samples/fixtures';
+const { RegistExpensesPage } = require('../pages/registExpenses.page');
+const test = require('../samples/fixtures');
 
 test.describe('Register', () => {
   let registPage;
