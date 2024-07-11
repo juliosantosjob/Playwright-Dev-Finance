@@ -40,7 +40,7 @@ export class RegistExpensesPage {
   }
 
   async removeRegister(expense) {
-    await this.page.locator('tr', { hasText: expense.description })
+    await this.page.locator('tr')
       .filter({ hasText: expense.description })
       .locator('img')
       .click();
