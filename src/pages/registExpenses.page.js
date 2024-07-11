@@ -28,13 +28,13 @@ export class RegistExpensesPage {
     const expenseDate = expense.date.split('-').reverse().join('/');
 
     const expenseRequirements = [
-      { hasText: expense.description },
-      { hasText: expense.amount },
-      { hasText: expenseDate }
+      { expense.description },
+      { expense.amount },
+      { expenseDate }
     ];
 
     for (let indix = 0; indix < expenseRequirements.length; indix++) {
-      await expect(this.page.locator('tr', expenseRequirements[indix]))
+      await expect(this.page.locator('tr', { hasText: expenseRequirements[indix] }))
         .toBeVisible();
     }
   }
