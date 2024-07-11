@@ -28,9 +28,9 @@ export class RegistExpensesPage {
     const expenseDate = expense.date.split('-').reverse().join('/');
 
     const expenseRequirements = [
-      { expense.description },
-      { expense.amount },
-      { expenseDate }
+      expense.description,
+      expense.amount,
+      expenseDate
     ];
 
     for (let indix = 0; indix < expenseRequirements.length; indix++) {
@@ -40,7 +40,7 @@ export class RegistExpensesPage {
   }
 
   async removeRegister(expense) {
-    await this.page.locator('tr')
+    await this.page.locator('tr', { hasText: expense.description })
       .filter({ hasText: expense.description })
       .locator('img')
       .click();
