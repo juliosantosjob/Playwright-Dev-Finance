@@ -19,13 +19,6 @@ export default base.test.extend({
     await use(() => data);
   },
 
-  registPage: async ({ page }, use) => {
-    const registPage = new RegistExpensesPage(page);
-    await use(registPage);
-  },
-
-  amountPage: async ({ page }, use) => {
-    const amountPage = new AmountsPage(page);
-    await use(amountPage);
-  }
+  registPage: async ({ page }, use) => await use(new RegistExpensesPage(page)),
+  amountPage: async ({ page }, use) => await use(new AmountsPage(page))
 });
