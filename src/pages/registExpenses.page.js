@@ -12,15 +12,14 @@ export class RegistExpensesPage {
   }
 
   async selectNewTransaction() {
-    await this.page.locator('a')
-      .filter({ hasText: 'Nova Transação' }).click();
+    await this.page.locator('a', { name: 'Nova Transação' }).click();
   }
 
   async registerExpense(expense) {
     await this.page.fill('#description', expense.description);
     await this.page.fill('#amount', expense.amount);
     await this.page.fill('#date', expense.date);
-    await this.page.locator('button', { hasText: 'Salvar' }).click();
+    await this.page.locator('button', { name: 'Salvar' }).click();
   }
 
   async itRegistered(expense) {
@@ -55,6 +54,6 @@ export class RegistExpensesPage {
       dialog.accept();
       expect(dialog.message()).toContain(message);
     });
-    await this.page.locator('button', { hasText: 'Salvar' }).click();
+    await this.page.locator('button', { name: 'Salvar' }).click();
   }
 }
