@@ -20,8 +20,7 @@ export class RegistExpensesPage {
     await this.page.fill('#description', expense.description);
     await this.page.fill('#amount', expense.amount);
     await this.page.fill('#date', expense.date);
-    await this.page.locator('button')
-      .filter({ hasText: 'Salvar' }).click();
+    await this.page.locator('button', { hasText: 'Salvar' }).click();
   }
 
   async itRegistered(expense) {
@@ -49,5 +48,13 @@ export class RegistExpensesPage {
   async verifyExpenseRemoved(expense) {
     await expect(this.page.locator('tr', { hasText: expense.description }))
       .toBeHidden();
+  }
+
+  async seeMessageAlert(message) {
+    await this.page.on('dialog', dialog => {
+      dialog.accept();
+      expect(dialog.message()).toContain(message);
+    });
+    await this.page.locator('button', { hasText: 'Salvar' }).click();
   }
 }

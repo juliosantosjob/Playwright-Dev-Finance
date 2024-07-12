@@ -10,6 +10,19 @@ test.describe('Register', () => {
     await registPage.itRegistered(expense);
   });
 
+  test('Registration expense empty', async ({ registPage, expenseFactory }) => {
+    var expense = await expenseFactory();
+
+    expense.description = '';
+    expense.amount = '';
+    expense.date = '';
+
+    await registPage.open();
+    await registPage.selectNewTransaction();
+    await registPage.registerExpense(expense);
+    await registPage.seeMessageAlert('Por favor, preencha todos os campos corretamente');
+  });
+
   test('Remove expense register', async ({ registPage, expenseFactory }) => {
     const expense = await expenseFactory();
 
