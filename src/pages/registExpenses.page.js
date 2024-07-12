@@ -12,7 +12,7 @@ export class RegistExpensesPage {
   }
 
   async selectNewTransaction() {
-    await this.page.locator('a', { name: 'Nova Transação' }).click();
+    await this.page.locator('a', { hasText: 'Nova Transação' }).click();
   }
 
   async registerExpense(expense) {
