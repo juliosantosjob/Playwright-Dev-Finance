@@ -50,10 +50,13 @@ export class RegistExpensesPage {
   }
 
   async seeMessageAlert(message) {
+    let messageDialog = '';
+    
     await this.page.on('dialog', dialog => {
       dialog.accept();
-      expect(dialog.message()).toContain(message);
+      messageDialog = dialog.message();
     });
     await this.page.locator('button', { name: 'Salvar' }).click();
+    expect(messageDialog).toContain(message);
   }
 }
