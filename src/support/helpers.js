@@ -7,7 +7,7 @@ export function getRandomValue(params = {}) {
   } else if (params.hasOwnProperty('array')) {
     array = params['array'];
   } else {
-    throw new Error('To use "rand" you must enter: "min", "max", or "array".');
+    throw new Error('To use "getRandomValue" you must enter: "min", "max", or "array".');
   }
 
   if (array !== undefined) {
