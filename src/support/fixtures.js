@@ -18,6 +18,11 @@ export default base.test.extend({
     };
     await use(() => data);
   },
+  
+  acceptDialogs: async ({ page }, use) => {
+    page.on('dialog', dialog => dialog.accept())
+    await use(page);
+  },
 
   registPage: async ({ page }, use) => await use(new RegistExpensesPage(page)),
   amountPage: async ({ page }, use) => await use(new AmountsPage(page))
