@@ -23,9 +23,11 @@ test.describe('Register', () => {
   });
   
   test('Registration expense empty', async ({ acceptDialogs, registPage }) => {
+    const message = 'Por favor, preencha todos os campos corretamente';
+    
     await registPage.open();
     await registPage.selectNewTransaction();
     await registPage.submit();
-    await registPage.seeMessageAlert('Por favor, preencha todos os campos corretamente');
+    await registPage.seeMessageAlert(message);
   });
 });
