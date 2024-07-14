@@ -1,9 +1,25 @@
-export function rand(arg1, arg2) {
-  if (arg2 === undefined) {
-    const randomIndex = Math.floor(Math.random() * arg1.length);
-    return arg1[randomIndex];
-  } else if (typeof arg1 === 'number' && typeof arg2 === 'number') {
-    const randomNumber = Math.floor(Math.random() * (arg1 - arg2 + 1) + arg2);
+export function rand(params = {}) {
+  let min, 
+      max, 
+      array;
+  
+    if(params.hasOwnProperty('min')) {
+      min = params['min']
+    }
+    
+    if(params.hasOwnProperty('max')) {
+      max = params['max']
+    }
+    
+    if(params.hasOwnProperty('array')) {
+      array = params['array']
+    }
+    
+  if (array !== undefined) {
+    const randomIndex = Math.floor(Math.random() * array.length);
+    return array[randomIndex];
+  } else if (typeof min === 'number' && typeof max === 'number') {
+    const randomNumber = Math.floor(Math.random() * (min - max + 1) + max);
     return randomNumber.toString();
   } else {
     throw new Error('Invalid parameters. Use an array or two numbers.');
