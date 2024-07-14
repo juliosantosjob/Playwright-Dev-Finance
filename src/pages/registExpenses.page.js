@@ -52,13 +52,8 @@ export class RegistExpensesPage {
       .toBeHidden();
   }
   
-  async acceptDialogs() {
-    await this.page.on('dialog', dialog => dialog.accept());
-  }
-
   async seeMessageAlert(message) {
-    await this.page.on('dialog', dialog => {
-      expect(dialog.message()).toContain(message);
-    });
+    await this.page.on('dialog', dialog =>
+      expect(dialog.message()).toContain(message));
   }
 }
