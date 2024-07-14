@@ -4,8 +4,6 @@ import { AmountsPage } from '../pages/amounts.page';
 import { getCurrentDate, rand } from './helpers';
 import { describeExpense } from '../samples/expenses.json';
 
-
-
 export default base.test.extend({
   expenseFactory: async ({ }, use) => {
     const data = {
