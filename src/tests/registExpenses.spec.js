@@ -22,9 +22,9 @@ test.describe('Register', () => {
     await registPage.verifyExpenseRemoved(expense);
   });
   
-  test.beforeEach(async ({ page, acceptDialogs }) => {});
+  test.beforeEach(async ({  }) => {});
   
-  test('Registration expense empty', async ({ registPage }) => {
+  test('Registration expense empty', async ({ acceptDialogs, registPage }) => {
     await registPage.open();
     await registPage.selectNewTransaction();
     await registPage.submit();
