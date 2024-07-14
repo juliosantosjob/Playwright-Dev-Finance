@@ -1,0 +1,6 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Sun Jul 14 07:12:59 GMT 2024","Sun Jul 14 07:13:00 GMT 2024","785","chromium","","Amounts","","","For each transaction, add the value in the ""total"" field",""
+"passed","Sun Jul 14 07:13:00 GMT 2024","Sun Jul 14 07:13:01 GMT 2024","495","chromium","","Register","","","Registration of a new expense",""
+"passed","Sun Jul 14 07:13:01 GMT 2024","Sun Jul 14 07:13:01 GMT 2024","532","chromium","","Register","","","Remove expense register",""
+"passed","Sun Jul 14 07:13:01 GMT 2024","Sun Jul 14 07:13:02 GMT 2024","419","chromium","","Register","","","Registration expense empty",""
+"passed","Sun Jul 14 07:13:00 GMT 2024","Sun Jul 14 07:13:00 GMT 2024","543","chromium","","Amounts","","","For each transaction, add the value in the ""Entradas"" field",""
