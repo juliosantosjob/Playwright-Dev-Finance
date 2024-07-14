@@ -12,8 +12,8 @@ const describeExpense = [
 export default base.test.extend({
   expenseFactory: async ({ }, use) => {
     const data = {
-      description: rand(describeExpense),
-      amount: rand(20, 200),
+      description: rand({ array: describeExpense }),
+      amount: rand({ min: 20, max: 200 }),
       date: getCurrentDate(),
     };
     await use(() => data);
