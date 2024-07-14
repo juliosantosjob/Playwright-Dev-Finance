@@ -11,6 +11,7 @@ test.describe('Amounts', () => {
     await registPage.open();
     await registPage.selectNewTransaction();
     await registPage.registerExpense(expense);
+    await registPage.submit();
     await registPage.itRegistered(expense);
     await amountPage.seeTotalAmount(expense);
   });
@@ -25,6 +26,7 @@ test.describe('Amounts', () => {
     await registPage.open();
     await registPage.selectNewTransaction();
     await registPage.registerExpense(expense);
+    await registPage.submit();
     await amountPage.seeAmountIncome(expense);
   });
 });
