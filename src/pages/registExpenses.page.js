@@ -19,6 +19,9 @@ export class RegistExpensesPage {
     await this.page.fill('#description', expense.description);
     await this.page.fill('#amount', expense.amount);
     await this.page.fill('#date', expense.date);
+  }
+  
+  async submit() {
     await this.page.locator('button', { name: 'Salvar' }).click();
   }
 
@@ -48,15 +51,14 @@ export class RegistExpensesPage {
     await expect(this.page.locator('tr', { hasText: expense.description }))
       .toBeHidden();
   }
+  
+  async acceptDialogs() {
+    await this.page.on('dialog', dialog => dialog.accept());
+  }
 
   async seeMessageAlert(message) {
-    let messageDialog = '';
-    
     await this.page.on('dialog', dialog => {
-      dialog.accept();
-      messageDialog = dialog.message();
+      expect(dialog.message()).toContain(message);
     });
-    await this.page.locator('button', { name: 'Salvar' }).click();
-    expect(messageDialog).toContain(message);
   }
 }
