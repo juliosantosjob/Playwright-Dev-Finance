@@ -1,14 +1,14 @@
 import { test as base } from '@playwright/test';
 import { RegistExpensesPage } from '../pages/registExpenses.page';
 import { AmountsPage } from '../pages/amounts.page';
-import { getCurrentDate, rand } from './helpers';
+import { getCurrentDate, getRandomValue } from './helpers';
 import { describeExpense } from '../samples/expenses.json';
 
 export default base.test.extend({
   expenseFactory: async ({ }, use) => {
     const data = {
-      description: rand({ array: describeExpense }),
-      amount: rand({ min: 10, max: 150 }),
+      description: getRandomValue({ array: describeExpense }),
+      amount: getRandomValue({ min: 10, max: 150 }),
       date: getCurrentDate(),
     };
     await use(() => data);
