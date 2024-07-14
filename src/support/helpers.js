@@ -19,6 +19,7 @@ export function getRandomValue(params = {}) {
   } else {
     throw new Error('Invalid parameters. Use an array or two numbers.');
   }
+}
 
 export function getCurrentDate() {
   const data = new Date();
