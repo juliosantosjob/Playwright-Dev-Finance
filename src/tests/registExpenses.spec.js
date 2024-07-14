@@ -11,14 +11,6 @@ test.describe('Register', () => {
     await registPage.itRegistered(expense);
   });
 
-  test('Registration expense empty', async ({ registPage }) => {
-    await registPage.open();
-    await registPage.selectNewTransaction();
-    await registPage.acceptDialogs();
-    await registPage.submit();
-    await registPage.seeMessageAlert('Por favor, preencha todos os campos corretamente');
-  });
-
   test('Remove expense register', async ({ registPage, expenseFactory }) => {
     const expense = await expenseFactory();
 
@@ -28,5 +20,16 @@ test.describe('Register', () => {
     await registPage.submit();
     await registPage.removeRegister(expense);
     await registPage.verifyExpenseRemoved(expense);
+  });
+  
+  test.beforeEach(async () => {
+    await registPage.acceptDialogs();
+  });
+  
+  test('Registration expense empty', async ({ registPage }) => {
+    await registPage.open();
+    await registPage.selectNewTransaction();
+    await registPage.submit();
+    await registPage.seeMessageAlert('Por favor, preencha todos os campos corretamente');
   });
 });
