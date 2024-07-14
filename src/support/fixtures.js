@@ -20,7 +20,7 @@ export default base.test.extend({
   },
   
   acceptDialogs: async ({ page }, use) => {
-    page.on('dialog', dialog => dialog.accept())
+    page.on('dialog', dialog => dialog.accept());
     await use(page);
   },
 
