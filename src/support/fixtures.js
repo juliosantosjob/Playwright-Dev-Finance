@@ -1,4 +1,4 @@
-import { test } from '@playwright/test';
+import { test as base } from '@playwright/test';
 import { RegistExpensesPage } from '../pages/registExpenses.page';
 import { AmountsPage } from '../pages/amounts.page';
 import { getCurrentDate, rand } from './helpers';
