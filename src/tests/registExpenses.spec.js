@@ -22,8 +22,6 @@ test.describe('Register', () => {
     await registPage.verifyExpenseRemoved(expense);
   });
   
-  test.beforeEach(async ({  }) => {});
-  
   test('Registration expense empty', async ({ acceptDialogs, registPage }) => {
     await registPage.open();
     await registPage.selectNewTransaction();
