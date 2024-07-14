@@ -14,6 +14,7 @@ test.describe('Register', () => {
   test('Registration expense empty', async ({ registPage }) => {
     await registPage.open();
     await registPage.selectNewTransaction();
+    await registPage.acceptDialogs();
     await registPage.submit();
     await registPage.seeMessageAlert('Por favor, preencha todos os campos corretamente');
   });
