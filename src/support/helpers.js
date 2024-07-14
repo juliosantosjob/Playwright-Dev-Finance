@@ -1,4 +1,4 @@
-export function getRandomValue(params = {}) {
+function getRandomValue(params = {}) {
   let min, max, array;
 
   if (params.hasOwnProperty('min') && params.hasOwnProperty('max')) {
@@ -21,7 +21,7 @@ export function getRandomValue(params = {}) {
   }
 }
 
-export function getCurrentDate() {
+function getCurrentDate() {
   const data = new Date();
   const year = data.getFullYear();
   const month = String(data.getMonth() + 1).padStart(2, '0');
@@ -29,3 +29,5 @@ export function getCurrentDate() {
 
   return `${year}-${month}-${day}`;
 }
+
+export { getRandomValue, getCurrentDate };
