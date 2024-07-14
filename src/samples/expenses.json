@@ -1,9 +1,7 @@
 {
   "describeExpense": [
-    "Carro", "Casa", 
-    "Luz", "Roupa", 
+    "Carro", "Casa", "Luz", "Roupa", 
     "Crédito para Celular", "Presente para Esposa",
-    "Ifood", "Internet", 
-    "Gás"
+    "Ifood", "Internet", "Gás"
   ]
 }
