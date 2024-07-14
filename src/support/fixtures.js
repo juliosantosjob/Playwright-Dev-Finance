@@ -2,7 +2,9 @@ import { test } from '@playwright/test';
 import { RegistExpensesPage } from '../pages/registExpenses.page';
 import { AmountsPage } from '../pages/amounts.page';
 import { getCurrentDate, rand } from './helpers';
-import { describeExpense } from '../samples/expense.json';
+import { describeExpense } from '../samples/expenses.json';
+
+
 
 export default base.test.extend({
   expenseFactory: async ({ }, use) => {
