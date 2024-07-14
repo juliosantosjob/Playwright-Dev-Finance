@@ -7,19 +7,14 @@ test.describe('Register', () => {
     await registPage.open();
     await registPage.selectNewTransaction();
     await registPage.registerExpense(expense);
+    await registPage.submit();
     await registPage.itRegistered(expense);
   });
 
-  test('Registration expense empty', async ({ registPage, expenseFactory }) => {
-    var expense = await expenseFactory();
-
-    expense.description = '';
-    expense.amount = '';
-    expense.date = '';
-
+  test('Registration expense empty', async ({ registPage }) => {
     await registPage.open();
     await registPage.selectNewTransaction();
-    await registPage.registerExpense(expense);
+    await registPage.submit();
     await registPage.seeMessageAlert('Por favor, preencha todos os campos corretamente');
   });
 
@@ -29,6 +24,7 @@ test.describe('Register', () => {
     await registPage.open();
     await registPage.selectNewTransaction();
     await registPage.registerExpense(expense);
+    await registPage.submit();
     await registPage.removeRegister(expense);
     await registPage.verifyExpenseRemoved(expense);
   });
