@@ -22,7 +22,7 @@ test.describe('Register', () => {
     await registPage.verifyExpenseRemoved(expense);
   });
   
-  test.beforeEach(async () => {
+  test.beforeEach(async ({ registPage }) => {
     await registPage.acceptDialogs();
   });
   
