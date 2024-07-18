@@ -34,8 +34,8 @@ export class RegistExpensesPage {
       expenseDate
     ];
 
-    for (let i = 0; i < expenseRequirements.length; i++) {
-      await expect(this.page.locator('tr', { hasText: expenseRequirements[i] }))
+    for (const expense of expenseRequirements) {
+      await expect(this.page.locator('tr', { hasText: expense }))
         .toBeVisible();
     }
   }
