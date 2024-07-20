@@ -22,10 +22,10 @@ function getRandomValue(params = {}) {
 }
 
 function getCurrentDate() {
-  const data = new Date();
-  const year = data.getFullYear();
-  const month = String(data.getMonth() + 1).padStart(2, '0');
-  const day = String(data.getDate()).padStart(2, '0');
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
 
   return `${year}-${month}-${day}`;
 }
