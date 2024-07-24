@@ -11,7 +11,7 @@ export default base.test.extend({
       amount: getRandomValue({ min: 10, max: 150 }),
       date: getCurrentDate(),
     };   
-    await use(data);
+    await data;
   },
   
   acceptDialogs: async ({ page }, use) => {
