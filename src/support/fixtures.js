@@ -5,13 +5,13 @@ import { getCurrentDate, getRandomValue } from './helpers';
 import { describeExpense } from '../samples/expenses.json';
 
 export default base.test.extend({
-  expenseFactory: async ({ }, use) => {
+  expenseFactory: async ({}, use) => {
     const data = {
       description: getRandomValue({ array: describeExpense }),
       amount: getRandomValue({ min: 10, max: 150 }),
       date: getCurrentDate(),
-    };
-    await use(() => data);
+    };   
+    await use(data);
   },
   
   acceptDialogs: async ({ page }, use) => {
