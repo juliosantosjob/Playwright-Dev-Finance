@@ -1,2 +1,0 @@
-"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"broken","Wed Jul 24 19:35:23 GMT 2024","Wed Jul 24 19:35:53 GMT 2024","30026","chromium","","Amounts","","","For each transaction, add the value in the ""total"" field",""
