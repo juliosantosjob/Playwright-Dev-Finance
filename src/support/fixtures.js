@@ -1,24 +1,34 @@
 import { test as base } from '@playwright/test';
-import { RegistExpensesPage } from '../pages/registExpenses.page';
-import { AmountsPage } from '../pages/amounts.page';
-import { getCurrentDate, getRandomValue } from './helpers';
-import { describeExpense } from '../samples/expenses.json';
+import { pagesInstances } from '../../pages-instance';
+import { data } from '../support/generetors';
 
 export default base.test.extend({
+
+  /**
+   * Generate random data
+   *
+   */
+
   expenseFactory: async ({ }, use) => {
-    const data = {
-      description: getRandomValue({ array: describeExpense }),
-      amount: getRandomValue({ min: 10, max: 150 }),
-      date: getCurrentDate(),
-    };
     await use(() => data);
   },
+
+  /**
+   * Accepts all dialogs
+   *
+   */
   
   acceptDialogs: async ({ page }, use) => {
     page.on('dialog', async dialog => await dialog.accept());
     await use(page);
   },
 
-  registPage: async ({ page }, use) => await use(new RegistExpensesPage(page)),
-  amountPage: async ({ page }, use) => await use(new AmountsPage(page))
+  /**
+   * Instance pages for tests in fixtures
+   *
+   */
+
+  pages: async ({ page }, use) => {
+    await use(pagesInstances(page));
+  }
 });

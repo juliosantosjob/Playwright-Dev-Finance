@@ -2,31 +2,29 @@ import test from '../support/fixtures';
 
 test.describe('Amounts', () => {
   test('For each transaction, add the value in the "total" field', async ({
+    pages,
     expenseFactory,
-    registPage,
-    amountPage
   }) => {
     const expense = await expenseFactory();
 
-    await registPage.open();
-    await registPage.selectNewTransaction();
-    await registPage.registerExpense(expense);
-    await registPage.submit();
-    await registPage.itRegistered(expense);
-    await amountPage.seeTotalAmount(expense);
+    await pages.registExpenses.open();
+    await pages.registExpenses.selectNewTransaction();
+    await pages.registExpenses.registerExpense(expense);
+    await pages.registExpenses.submit();
+    await pages.registExpenses.itRegistered(expense);
+    await pages.amounts.seeTotalAmount(expense);
   });
 
   test('For each transaction, add the value in the "Entradas" field', async ({
-    expenseFactory,
-    registPage,
-    amountPage
+    pages,
+    expenseFactory
   }) => {
     const expense = await expenseFactory();
 
-    await registPage.open();
-    await registPage.selectNewTransaction();
-    await registPage.registerExpense(expense);
-    await registPage.submit();
-    await amountPage.seeAmountIncome(expense);
+    await pages.registExpenses.open();
+    await pages.registExpenses.selectNewTransaction();
+    await pages.registExpenses.registerExpense(expense);
+    await pages.registExpenses.submit();
+    await pages.amounts.seeAmountIncome(expense);
   });
 });

@@ -1,33 +1,33 @@
 import test from '../support/fixtures';
 
 test.describe('Register', () => {
-  test('Registration of a new expense', async ({ registPage, expenseFactory }) => {
+  test('Registration of a new expense', async ({ pages, expenseFactory }) => {
     const expense = await expenseFactory();
 
-    await registPage.open();
-    await registPage.selectNewTransaction();
-    await registPage.registerExpense(expense);
-    await registPage.submit();
-    await registPage.itRegistered(expense);
+    await pages.registExpenses.open();
+    await pages.registExpenses.selectNewTransaction();
+    await pages.registExpenses.registerExpense(expense);
+    await pages.registExpenses.submit();
+    await pages.registExpenses.itRegistered(expense);
   });
 
-  test('Remove expense register', async ({ registPage, expenseFactory }) => {
+  test('Remove expense register', async ({ pages, expenseFactory }) => {
     const expense = await expenseFactory();
 
-    await registPage.open();
-    await registPage.selectNewTransaction();
-    await registPage.registerExpense(expense);
-    await registPage.submit();
-    await registPage.removeRegister(expense);
-    await registPage.verifyExpenseRemoved(expense);
+    await pages.registExpenses.open();
+    await pages.registExpenses.selectNewTransaction();
+    await pages.registExpenses.registerExpense(expense);
+    await pages.registExpenses.submit();
+    await pages.registExpenses.removeRegister(expense);
+    await pages.registExpenses.verifyExpenseRemoved(expense);
   });
-  
-  test('Registration expense empty', async ({ acceptDialogs, registPage }) => {
+
+  test('Registration expense empty', async ({ pages }) => {
     const message = 'Por favor, preencha todos os campos corretamente';
-    
-    await registPage.open();
-    await registPage.selectNewTransaction();
-    await registPage.submit();
-    await registPage.seeMessageAlert(message);
+
+    await pages.registExpenses.open();
+    await pages.registExpenses.selectNewTransaction();
+    await pages.registExpenses.submit();
+    await pages.registExpenses.seeMessageAlert(message);
   });
 });
