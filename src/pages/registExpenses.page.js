@@ -1,11 +1,17 @@
 import { expect } from '@playwright/test';
-import { RegistExpensesElements } from '../elements/registExpenses.elements.js';
 
 export class RegistExpensesPage {
-
   constructor(page) {
     this.page = page;
-    this.elements = new RegistExpensesElements(page);
+    this.newTransactionLink = page.getByRole('link', { name: 'Nova Transação' });
+    this.titleNewTransaction = page.locator('#form');
+    this.buttonCanceled = page.locator('.button.cancel');
+    this.descriptionInput = page.locator('#description');
+    this.amountInput = page.locator('#amount');
+    this.dateInput = page.locator('#date');
+    this.saveButton = page.locator('button').filter({ hasText: 'Salvar' });
+    this.expenseTr = page.locator('tr');
+    this.removeButton = page.locator('img');
   }
 
   async atHome() {
@@ -14,22 +20,22 @@ export class RegistExpensesPage {
   }
 
   async selectNewTransaction() {
-    await this.elements.newTransactionLink.click();
-    await expect(this.elements.titleNewTransaction).toContainText('Nova Transação');
+    await this.newTransactionLink.click();
+    await expect(this.titleNewTransaction).toContainText('Nova Transação');
   }
 
   async cancelRegister() {
-    await this.elements.buttonCanceled.click();
+    await this.buttonCanceled.click();
   }
 
   async registerExpense(expense) {
-    await this.elements.descriptionInput.fill(expense.description);
-    await this.elements.amountInput.fill(expense.amount);
-    await this.elements.dateInput.fill(expense.date);
+    await this.descriptionInput.fill(expense.description);
+    await this.amountInput.fill(expense.amount);
+    await this.dateInput.fill(expense.date);
   }
 
   async submit() {
-    await this.elements.saveButton.click();
+    await this.saveButton.click();
   }
 
   async itRegistered(expense) {
@@ -41,30 +47,30 @@ export class RegistExpensesPage {
       expenseDate
     ];
 
-    for (const expense of expenseRequirements) {
-      await expect(this.page.locator('tr', { hasText: expense }))
-        .toBeVisible();
+    for (const value of expenseRequirements) {
+      await expect(
+        this.page.locator('tr').filter({ hasText: value }).first()
+      ).toBeVisible();
     }
   }
 
   async removeRegister(expense) {
-    await this.elements.expenseTr
+    await this.expenseTr
       .filter({ hasText: expense.description })
-      .locator(this.elements.removeButton)
+      .locator(this.removeButton)
       .click();
   }
 
   async verifyExpenseRemoved(expense) {
-    await expect(this.elements.expenseTr
-      .filter({ hasText: expense.description }))
-      .toBeHidden();
+    await expect(
+      this.expenseTr.filter({ hasText: expense.description })
+    ).toBeHidden();
   }
 
   async seeMessageAlert(message) {
-    await this.page.on('dialog', dialog => {
+    this.page.once('dialog', async dialog => {
       expect(dialog.message()).toContain(message);
-      dialog.accept();
+      await dialog.accept();
     });
   }
-
 }
