@@ -1,30 +1,81 @@
-import test from '../support/fixtures';
+import test from '../fixtures/base.fixtures';
 
-test.describe('Amounts', () => {
-  test('For each transaction, add the value in the "total" field', async ({
+test.describe('Registro de Valores', () => {
+  const messageError = 'Por favor, preencha todos os campos corretamente';
+
+  test('Para cada transação, sadicione o valor no campo "total"', async ({
     pages,
     expenseFactory,
   }) => {
     const expense = await expenseFactory();
 
-    await pages.registExpenses.open();
-    await pages.registExpenses.selectNewTransaction();
-    await pages.registExpenses.registerExpense(expense);
-    await pages.registExpenses.submit();
-    await pages.registExpenses.itRegistered(expense);
+    await pages.expenses.atHome();
+    await pages.expenses.selectNewTransaction();
+    await pages.expenses.registerExpense(expense);
+    await pages.expenses.submit();
+    await pages.expenses.itRegistered(expense);
     await pages.amounts.seeTotalAmount(expense);
   });
 
-  test('For each transaction, add the value in the "Entradas" field', async ({
+  test('Para cada transação, adicione o valor no campo "Entradas"', async ({
     pages,
     expenseFactory
   }) => {
     const expense = await expenseFactory();
 
-    await pages.registExpenses.open();
-    await pages.registExpenses.selectNewTransaction();
-    await pages.registExpenses.registerExpense(expense);
-    await pages.registExpenses.submit();
+    await pages.expenses.atHome();
+    await pages.expenses.selectNewTransaction();
+    await pages.expenses.registerExpense(expense);
+    await pages.expenses.submit();
     await pages.amounts.seeAmountIncome(expense);
+  });
+
+  test('Não deve registrar transação com "valor" vazio', async ({
+    pages,
+    expenseFactory
+  }) => {
+    const expense = await expenseFactory();
+    expense.amount = '';
+
+    await pages.expenses.atHome();
+    await pages.expenses.selectNewTransaction();
+    await pages.expenses.registerExpense(expense);
+    await pages.expenses.seeMessageAlert(messageError);
+    await pages.expenses.submit();
+  });
+
+  test('Não deve registrar transação com "descrição" vazia', async ({
+    pages,
+    expenseFactory
+  }) => {
+    const expense = await expenseFactory();
+    expense.description = '';
+
+    await pages.expenses.atHome();
+    await pages.expenses.selectNewTransaction();
+    await pages.expenses.registerExpense(expense);
+    await pages.expenses.seeMessageAlert(messageError);
+    await pages.expenses.submit();
+  });
+
+  test('Não deve registrar transação com "data" vazia', async ({
+    pages,
+    expenseFactory
+  }) => {
+    const expense = await expenseFactory();
+    expense.date = '';
+
+    await pages.expenses.atHome();
+    await pages.expenses.selectNewTransaction();
+    await pages.expenses.registerExpense(expense);
+    await pages.expenses.seeMessageAlert(messageError);
+    await pages.expenses.submit();
+  });
+
+  test('Não deve registrar transação com todos os campos vazios', async ({ pages }) => {
+    await pages.expenses.atHome();
+    await pages.expenses.selectNewTransaction();
+    await pages.expenses.submit();
+    await pages.expenses.seeMessageAlert(messageError);
   });
 });

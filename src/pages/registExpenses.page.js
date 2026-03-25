@@ -1,28 +1,35 @@
 import { expect } from '@playwright/test';
+import { RegistExpensesElements } from '../elements/registExpenses.elements.js';
 
 export class RegistExpensesPage {
 
   constructor(page) {
     this.page = page;
+    this.elements = new RegistExpensesElements(page);
   }
 
-  async open() {
+  async atHome() {
     await this.page.goto('/');
     await expect(this.page).toHaveTitle('dev.finance$');
   }
 
   async selectNewTransaction() {
-    await this.page.locator('a', { hasText: 'Nova Transação' }).click();
+    await this.elements.newTransactionLink.click();
+    await expect(this.elements.titleNewTransaction).toContainText('Nova Transação');
+  }
+
+  async cancelRegister() {
+    await this.elements.buttonCanceled.click();
   }
 
   async registerExpense(expense) {
-    await this.page.fill('#description', expense.description);
-    await this.page.fill('#amount', expense.amount);
-    await this.page.fill('#date', expense.date);
+    await this.elements.descriptionInput.fill(expense.description);
+    await this.elements.amountInput.fill(expense.amount);
+    await this.elements.dateInput.fill(expense.date);
   }
-  
+
   async submit() {
-    await this.page.locator('button', { name: 'Salvar' }).click();
+    await this.elements.saveButton.click();
   }
 
   async itRegistered(expense) {
@@ -41,19 +48,23 @@ export class RegistExpensesPage {
   }
 
   async removeRegister(expense) {
-    await this.page.locator('tr')
+    await this.elements.expenseTr
       .filter({ hasText: expense.description })
-      .locator('img')
+      .locator(this.elements.removeButton)
       .click();
   }
 
   async verifyExpenseRemoved(expense) {
-    await expect(this.page.locator('tr', { hasText: expense.description }))
+    await expect(this.elements.expenseTr
+      .filter({ hasText: expense.description }))
       .toBeHidden();
   }
-  
+
   async seeMessageAlert(message) {
-    await this.page.on('dialog', dialog =>
-      expect(dialog.message()).toContain(message));
+    await this.page.on('dialog', dialog => {
+      expect(dialog.message()).toContain(message);
+      dialog.accept();
+    });
   }
+
 }
